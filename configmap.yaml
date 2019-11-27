@@ -1,0 +1,8 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: handson-configmap 
+  namespace: handson
+data:
+  foo: bar
+  baz: qux

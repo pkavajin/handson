@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: handson
+  namespace: handson
+  labels:
+    component: handson
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: handson
+  template:
+    metadata:
+      labels:
+        component: handson
+    spec:
+      containers:
+      - name: handson
+        image: kavatech/handson
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: pvc-volume
+          mountPath: /data
+      volumes:
+      - name: pvc-volume
+        persistentVolumeClaim:
+          claimName: handson-pvc

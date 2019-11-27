@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: handson
+  namespace: handson
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: 'schnitzel.192.168.99.100.xip.io'
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: handson
+          servicePort: 8080
